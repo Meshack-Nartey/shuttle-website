@@ -9,7 +9,7 @@ const ReliabilitySection = () => {
         
         <div className="stats-column">
           <div className="stat-card">
-            <p className="stat-number">99.9%</p>
+            <p className="stat-number">99.8%</p>
             <p className="stat-label">Uptime guarantee</p>
           </div>
           <div className="stat-card">
