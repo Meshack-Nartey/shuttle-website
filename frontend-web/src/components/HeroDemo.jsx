@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const HeroDemo = () => {
   return (
@@ -6,11 +6,19 @@ const HeroDemo = () => {
       <div className="container hero-demo-content">
         <h1>Book your demo</h1>
         <p className="hero-demo-subtitle">
-          Meet ShuttleSmart's experts to discuss logistics in a live demo.
+          See ShuttleSmart transform your campus logistics in real time
         </p>
         <div className="hero-demo-buttons">
-          <a href="/contact" className="btn btn-primary">Schedule</a>
-          <a href="/about" className="btn btn-link">Learn</a>
+          <a
+            href="/contact"
+            className="btn btn-primary">
+            Schedule
+          </a>
+          <a
+            href="/about"
+            className="btn btn-link">
+            Learn
+          </a>
         </div>
       </div>
     </section>

@@ -1,68 +1,1211 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* GLOBAL/UTILITY STYLES (App.css) */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    --color-primary-blue: #278EFF; /* Main Blue Color */
+    --color-dark-bg: #030303; /* Dark Background Color */
+    --color-white: #ffffff;
+    --color-text-gray: #ccc;
+    --color-border: #3b3c3e;
+    --font-family-poppins: 'Raleway', sans-serif; 
+    /* Add this import to your index.css or equivalent */
+    /* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap'); */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+html {
+    font-size: 62.5%;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    /* font-family: var(--font-family-poppins); */
+     font-family: "Raleway", sans-serif;
+    background-color: var(--color-dark-bg);
+    color: var(--color-white);
+    overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    object-fit: cover;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
+  outline: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+p {
+    font-size: 1.4rem;
+}
+
+
+
+h4 {
+    font-size: 2rem;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  /* font-weight: 600; */
+}
+
+
+/* BUTTONS */
+.btn {
+    padding: 1.5rem 6.5rem;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    width:auto;
+    font-size: 1.4rem;
+}
+
+.btn-primary {
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    border: 0.2rem solid var(--color-primary-blue);
+    font-size: 1.4rem !important;
+}
+
+/* HEADER STYLES */
+.main-header {
+    background-color: var(--color-dark-bg);
+    position: sticky; /* Common for headers */
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-bar {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem;
+
+    .nav-links {
+      
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 3.2rem;
+
+        li {
+            font-size: 2rem;
+        }
+
+        .active {
+            color:  var(--color-primary-blue) !important;
+        }
+      }
+    }
+}
+
+.logo-img {
+    width: 12rem;
+    object-fit: cover;
+}
+
+
+
+.nav-link {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.btn-demo {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+    color: var(--color-dark-bg);
+    background-color: var(--color-white);
+    border: none;
+}
+
+
+
+/* FOOTER STYLES */
+.main-footer {
+    padding: 4rem 8rem;
+    background-color: var(--color-white);
+    color: var(--color-border);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--color-border);
+    flex-wrap: wrap; /* For mobile responsiveness */
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    align-items: center;
+    
+    
+}
+
+.footer-link {
+    color: var(--color-border);
+    text-decoration: none;
+}
+
+/* Simple Mobile Adaptation */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .copyright {
+        margin-bottom: 10px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+
+
+/* --- HERO HOME STYLES --- */
+
+.container {
+    width: 85%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+.hero-home {
+    height: 100vh; 
+    /* Use a high-quality background image path */
+    background-image: url('/page1-1.jpg'); 
+    background-size: cover;
+    background-position: center;
+    /* Dark overlay for text readability */
+    
+}
+
+.hero-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .text-block {
+
+      width: 55%;
+
+
+      h1 {
+      font-size: 4.8rem;
+      line-height: 1.1;
+    margin-bottom: 2rem;
+    }
+
+    p {
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      font-size: 1.4rem;
+    }
+
+    .hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.4rem;
+}
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  @media  (max-width: 50em) {
+    .text-block{
+        width: 100%;
+    }
+
+    .text-block h1{
+    font-size: 3.2rem;
+    }
+
+    .text-block p{
+        font-size: 1.4rem;
+    }
+
+    .hero-buttons .btn{
+        min-width: 15rem;
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+    
   }
 }
+
+
+
+
+.btn-secondary {
+    background-color: var(--color-white);
+    border: 0.2rem solid var(--color-white);
+    color: var(--color-dark-bg);
+    
+}
+
+.btn-secondary:hover{
+    background-color: var(--color-primary-blue);
+    color: #fff;
+}
+
+.btn-link{
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+}
+
+
+
+
+
+
+/* --- RELIABILITY SECTION STYLES --- */
+.reliability-section {
+    background-color: var(--color-dark-bg);
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.reliability-section h2 {
+    font-size: 5.2rem;
+    margin-bottom: 5rem;
+    display: block;
+    padding-bottom: 4rem;
+}
+
+.reliability-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    text-align: left;
+
+    @media (max-width: 50em) {
+        flex-direction: column;
+    }
+}
+
+.stats-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 0 0 25%;
+
+   @media (max-width: 50em) {
+        width: 100%;
+    }
+
+}
+
+.stat-card {
+    background-color: var(--color-dark-bg); /* Slightly lighter dark background for cards */
+    padding: 1.5rem 3rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid var(--color-border);
+    transition: transform 0.3s;
+    align-items: center;
+
+    p:first-child {
+      font-size: 4rem !important;
+    }
+
+    p {
+      text-align: center !important;
+    }
+ 
+}
+
+.stat-card:hover {
+    transform: translateY(-0.5rem);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-primary-white);
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--color-text-gray);
+}
+
+.image-column {
+    max-width: 70rem;
+    flex: 1 1 60%;
+}
+
+.reliability-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.8rem;
+    object-fit: cover;
+}
+
+
+
+
+/* --- FEATURES SECTION STYLES --- */
+.features-section {
+    padding: 8rem 0;
+    text-align: center;
+    background-color: var(--color-white);
+}
+
+.features-section h3 {
+    font-size: 5.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark-bg);
+}
+
+.features-subtitle {
+    font-size: 1.4rem;
+    color: var(--color-dark-bg);
+    margin-bottom: 5rem;
+
+}
+
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.2rem;
+
+    @media (max-width: 70em) {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    @media (max-width: 32em) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.feature-card {
+    background-size: cover;
+    background-position: center;
+    height: 24.2rem; 
+    width: 100%;
+    border-radius: 0.8rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s linear;
+
+
+    & p{
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+    transform: translateY(-1rem);
+    }
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: 1;
+}
+
+.feature-card h4, .card-subtitle, .btn-learn-more {
+    z-index: 2; 
+}
+
+.card-subtitle{
+  font-size: 1rem;
+}
+
+
+.feature-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.btn-learn-more {
+    color: var(--color-text-graye);
+    font-size: 1.2rem;
+    text-align: left;
+
+    &:hover{
+      color: var(--color-primary-blue);
+    }
+}
+
+.card-1 { background-image: url('/page1-3.jpg'); background-position: center; }
+.card-2 { background-image: url('/page1-4.jpg'); background-position: center;}
+.card-3 { background-image: url('/page1-5.jpg'); background-position: center; }
+
+
+.card-subtitle{
+    font-size: 1.6rem;
+    color: var(--color-white);
+    text-align: left;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+/* --- CTA SECTION STYLES --- */
+.cta-section {
+    padding: 8rem 0;
+    text-align: center;
+    background-color: var(--color-white)
+}
+
+.cta-section h3 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark-bg);
+}
+
+.cta-description {
+    color: var(--color-border);
+    margin-bottom: 3rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    @media(max-width: 32em) {
+        flex-direction: column;
+    }
+}
+
+.btn-secondary{
+    background-color: var(--color-white);
+    color: var(--color-dark-bg);
+    border-color: var(--color-border);
+}
+
+.btn-secondary:hover{
+    background-color: var(--color-border);
+}
+
+
+
+
+/* --- HERO ABOUT STYLES --- */
+.hero-about {
+    position: relative;
+    height: 100vh; 
+    background-image: url('/page2-1.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+/* --- WHY BUILT SECTION STYLES --- */
+.why-built-section {
+    padding: 8rem 0;
+    text-align: center;
+    background-color: var(--color-dark-bg);
+}
+
+.why-built-section h2 {
+    font-size: 5.2rem;
+    margin-bottom: 5rem;
+}
+
+.reason-card {
+    background-color:var(--color-white);
+    border-radius: 1.5rem;
+    border: 0.2rem solid var(--color-border);
+    padding: 4rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    text-align: left;
+
+  
+}
+
+.reason-icon {
+    flex-shrink: 0;
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.reason-icon img {
+    width: 4rem;
+    height: 4rem;
+    filter: invert(100%); /* Make icon white if it's black by default */
+}
+
+.reason-text h4 {
+    color: var(--color-dark-bg);
+    margin-bottom: 1rem;
+
+}
+
+.reason-text ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.reason-text li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--color-dark-bg);
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+.reason-text li::before {
+    content: '•'; /* Custom bullet point */
+    color: var(--color-primary-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1rem;
+    margin-left: -1rem;
+}
+
+.demo-link {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+
+
+
+/* --- HOW IT WORKS SECTION STYLES --- */
+.how-it-works-section {
+    padding: 8rem 0;
+    text-align: center;
+    background-color: var(--color-white); /* White background for this section */
+    color: var(--color-dark-bg);
+
+        @media (max-width:70em) {
+        .container{
+            width: 90%;
+            padding: 0 1.5rem;
+        }
+        .works-cards-container {
+        flex-direction: column; 
+        gap: 4rem;
+       }
+      .driver-card, .work-card {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .works-card{
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        width: 100%;
+
+        .app-info{
+            padding-right: 15rem;
+            padding-top: 2rem;
+            width: 100%;
+        }
+      }
+    }
+}
+
+.how-it-works-section h2 {
+    font-size: 5.2rem;
+    margin-bottom: 5rem;
+    color: var(--color-dark-bg);
+}
+
+.works-cards-container {
+    display: flex;
+    flex-direction:row;
+    gap: 4rem;
+}
+
+.driver-card{
+    display: flex;
+    flex-direction: column;
+    border-top: 0.1rem solid var(--color-text-gray);
+    border-right: 0.1rem solid var(--color-text-gray);
+    border-left: 0.1rem solid var(--color-text-gray);
+    justify-content: space-between;
+    border-bottom: 0;
+    overflow: hidden;
+    border-radius: 0.8rem;
+
+    .app-info{
+        padding-left: 2rem;
+        padding-top: 2rem;
+    }
+
+    .app-image-wrapper{
+        border-radius: 0;
+
+        img {
+
+            height: 100%;
+        }
+    }
+}
+
+.works-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    
+    border-top: 0.1rem solid var(--color-text-gray);
+    border-right: 0.1rem solid var(--color-text-gray);
+    border-left: 0.1rem solid var(--color-text-gray);
+    border-bottom: 0.1rem solid var(--color-text-gray);;
+    border-radius: 0.8rem;
+    padding-left: 2rem;
+}
+
+.app-info {
+    max-width: 80rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.app-info h3 {
+    font-size: 2rem;
+    color: var(--color-dark-bg);
+    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+
+
+.app-info li {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-border);
+    padding-left: 1rem;
+    list-style: none;
+}
+
+.app-image-wrapper {
+    max-width: 40rem;
+    border-radius: 0.8rem;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+}
+
+.app-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    
+}
+
+.how-it-works-section .btn-link {
+    color: var(--color-dark-bg);
+    font-weight: 600;
+    background: none;
+    padding: 0;
+    margin-top: 1rem;
+    font-size: 1.2rem !important;
+}
+
+.how-it-works-section .btn-link:hover{
+    color: var(--color-border);
+    background: none;
+}
+
+
+
+
+
+
+
+/* --- HISTORY SECTION STYLES --- */
+.history-section {
+    padding: 6rem 0;
+    text-align: center;
+    background-color: var(--color-white);
+    color: var(--color-dark-bg);
+    font-weight: 600;
+
+
+    p{
+        font-size: 3.2rem;
+    }
+}
+
+
+
+
+/* --- HERO CONTACT STYLES --- */
+.hero-contact {
+    position: relative;
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    /* Dark overlay for text readability */
+    box-shadow: inset 0 0 0 100rem rgba(0, 0, 0, 0.55); 
+}
+
+/* --- HERO CONTACT VIDEO STYLES (Add/Modify in src/App.css) --- */
+
+/* A. Outer Container Setup */
+.hero-contact-video-container {
+    position: relative; /* CRITICAL: Allows absolute positioning of the video child */
+    height: 100vh; /* Define the section's height */
+    overflow: hidden; /* Clips the edges of the scaled video */
+    background-color: #000; /* Fallback color for dark video theme */
+    
+    /* Center text content vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* B. Background Video Positioning and Scaling */
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    /* 1. Scale the video to cover the entire container */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    
+    /* 2. Center the video element perfectly */
+    transform: translate(-50%, -50%); 
+    
+    /* 3. Ensure it's behind the text */
+    z-index: 1; 
+}
+
+/* C. Content Overlay (Text and Buttons) */
+.hero-contact-content {
+    position: relative;
+    z-index: 10; /* CRITICAL: Puts content above the video */
+    
+    /* Optional: Add a dark overlay to make white text readable over bright video footage */
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 2rem;
+    border-radius: 0.8rem;
+    
+    /* Ensure text colors are white/light */
+    color: var(--color-white);
+
+    h1 {
+        font-weight: 600 !important;
+        font-size: 5.4rem;
+        letter-spacing: -0.2rem;
+    }
+}
+
+.hero-contact-content {
+    max-width: 90rem;
+    padding: 4rem 0;
+    background:none;
+}
+
+.hero-contact h1 {
+    font-size: 7.2rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.hero-contact-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-white);
+    margin-bottom: 3rem;
+}
+
+.hero-contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.btn-connect, .btn-demo-light {
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    border: none; /* No border for these two */
+}
+
+
+
+
+/* --- CONTACT FORM SECTION STYLES --- */
+.contact-form-section {
+    padding: 8rem 0;
+    background-color: var(--color-primary-blue); /* The large blue block */
+    color: var(--color-white);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1 column for info, 2 columns for the form */
+    gap: 6rem;
+}
+
+/* --- Contact Info Column --- */
+.contact-info-col h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-subheading {
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.contact-details p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-details a {
+    color: var(--color-white);
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.icon-mail, .icon-phone, .icon-location {
+    /* Placeholder for icons: You'll replace this with an actual icon font or SVG */
+    font-style: normal; 
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+/* --- Contact Form Column --- */
+.contact-form-col {
+    background-color: var(--color-white);
+    padding: 4rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.2);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: var(--color-dark-bg);
+    margin-top: 0.5rem;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group-inline input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 10rem;
+}
+
+.radio-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.radio-group label {
+    font-weight: 400;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 0.8rem;
+    /* Adjust size if necessary */
+}
+
+.btn-submit {
+    align-self: flex-start;
+    padding: 1.2rem 4rem;
+    margin-top: 1rem;
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 40px;
+    }
+    .form-group-inline {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+
+
+
+
+/* --- HERO DEMO STYLES --- */
+.hero-demo {
+    padding: 13rem 0 13rem; 
+    text-align: center;
+    background-color: var(--color-white); /* Light background */
+    color: var(--color-dark-bg);
+    height: 100vh;
+}
+
+.hero-demo h1 {
+    font-size: 8rem;
+    color: var(--color-primary-blue);
+    margin-bottom: 2rem;
+}
+
+.hero-demo-subtitle {
+    font-size: 4rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+}
+
+.hero-demo-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.hero-demo .btn-link {
+    color: var(--color-primary-blue);
+    border: 0.1rem solid var(--color-primary-blue);
+    background-color: var(--color-white);
+    font-weight: 600;
+    transition: 0.2s linear;
+
+    &:hover{
+    color: var(--color-border);
+    border-color: var(--color-border);
+    }
+}
+
+
+.hero-demo .btn-primary {
+    color: var(--color-dark-bg);
+    background-color: var(--color-primary-blue);
+    transition: 0.2s linear;
+
+    &:hover{
+    color: var(--color-white);
+    }
+}
+
+
+
+
+
+
+/* --- TIMELINE SECTION STYLES --- */
+.start-step{
+    padding: 7rem 30 0;
+    padding-left: 6.5rem; 
+    max-width: 80rem;
+    margin-bottom: 8rem;
+    
+
+    h3{
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    }
+
+    p{
+    color: var(--color-text-gray);
+    margin-bottom: 2rem;
+    }
+
+    .btn{
+        background: none;
+        padding: 0;
+    }
+}
+
+.timeline-section {
+    padding: 8rem 0;
+    background-color: var(--color-dark-bg);
+    color: var(--color-white);
+}
+
+
+.timeline-container {
+    max-width: 80rem;
+    position: relative;
+    padding-left: 5rem; /* Space for the line and dots */
+}
+
+/* Vertical Timeline Line */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2.5rem; /* Half of padding-left */
+    bottom: 0;
+    width: 0.2rem;
+    background-color: #1f2a3c; /* Dark gray line */
+}
+
+.timeline-item {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 1rem; /* Aligns dot with line */
+    top: 1.9rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-white);
+    z-index: 10;
+}
+
+.timeline-content {
+    background-color: #0d1a2f; /* Slightly lighter card background */
+    padding: 3rem;
+    border-radius: 0 0.8rem 0.8rem 0.8rem;
+    border-left: 0.5rem solid var(--color-white); /* Visual accent */
+    margin-left: 2rem; /* Push content past the dot */
+}
+
+.timeline-step {
+    font-weight: 700;
+    color: var(--color-primary-blue);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    
+}
+.timeline-content h3:first-child{
+    margin-bottom: 0;
+}
+
+.timeline-description {
+    color: var(--color-text-gray);
+    margin-bottom: 2rem;
+}
+
+.timeline-actions {
+    display: flex;
+    gap: 2rem;
+}
+
+.timeline-schedule, .timeline-learn {
+    color: var(--color-text-graye);
+    font-size: 1.2rem;
+    text-align: left;
+
+    &:hover{
+      color: var(--color-border);
+    }
+}
+
+/* --- DATA PROTECTION SECTION STYLES --- */
+.data-protection-section {
+    padding: 8rem 0;
+    background-color: var(--color-white); /* Light background */
+    color: var(--color-dark-bg);
+}
+
+.data-protection-section h2 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: var(--color-dark-bg);
+    text-align: center;
+}
+
+.data-protection-section p {
+    max-width: 80rem;
+    margin: 0 auto;
+    font-size: 2rem;
+    color: #444;
+    line-height: 1.6;
+}
+

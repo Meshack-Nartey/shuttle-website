@@ -1,15 +1,14 @@
 // src/components/ReliabilitySection.jsx
-import React from 'react';
+import React from "react";
 
 const ReliabilitySection = () => {
   return (
     <section className="reliability-section">
+      <h2>Built on reliability</h2>
       <div className="container reliability-grid">
-        <h2>Built on reliability</h2>
-        
         <div className="stats-column">
           <div className="stat-card">
-            <p className="stat-number">99.8%</p>
+            <p className="stat-number">99.9%</p>
             <p className="stat-label">Uptime guarantee</p>
           </div>
           <div className="stat-card">
@@ -21,10 +20,13 @@ const ReliabilitySection = () => {
             <p className="stat-label">Students served daily</p>
           </div>
         </div>
-        
+
         <div className="image-column">
-          {/* Ensure the image path is correct */}
-          <img src="/reliability-bus-image.jpg" alt="Student boarding a bus" className="reliability-img" />
+          <img
+            src="/page1-2.jpeg"
+            alt="Student boarding a bus"
+            className="reliability-img"
+          />
         </div>
       </div>
     </section>
