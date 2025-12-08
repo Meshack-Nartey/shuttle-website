@@ -9,25 +9,22 @@ const FeaturesSection = () => {
         <p className="features-subtitle">Three core systems working in perfect synchronization</p>
         
         <div className="feature-cards">
-          {/* Feature Card 1 */}
           <div className="feature-card card-1">
-            <div className="icon-overlay"></div>
-            <h4>Real-time GPS tracking</h4>
-            <a href="#" className="btn btn-learn-more">Learn More &gt;</a>
+            <h4>Real-time GPS <br />tracking</h4>
+            <p className="card-subtitle sub-1">Know exactly where every shuttle is, every moment</p>
+            <a href="#" className="btn-learn-more">Learn More &gt;</a>
           </div>
-          
-          {/* Feature Card 2 */}
           <div className="feature-card card-2">
             <div className="icon-overlay"></div>
             <h4>Secure student authentication</h4>
-            <a href="#" className="btn btn-learn-more">Learn More &gt;</a>
+            <p className="card-subtitle sub-2">Protect your students with verified boarding via student/staff email</p>
+            <a href="#" className="btn-learn-more">Learn More &gt;</a>
           </div>
-          
-          {/* Feature Card 3 */}
           <div className="feature-card card-3">
             <div className="icon-overlay"></div>
             <h4>Data-driven route optimization</h4>
-            <a href="#" className="btn btn-learn-more">Learn More &gt;</a>
+            <p className="card-subtitle sub-3">Reduce wait times and fuel costs through intelligent algorithms</p>
+            <a href="#" className="btn-learn-more">Learn More &gt;</a>
           </div>
         </div>
       </div>

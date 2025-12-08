@@ -9,12 +9,11 @@ import ContactFormSection from '../components/ContactFormSection'; // Unique For
 const ContactPage = () => {
   return (
     <>
-      <Header />
+      
       <main>
         <HeroContact />
         <ContactFormSection />
       </main>
-      <Footer />
     </>
   );
 };

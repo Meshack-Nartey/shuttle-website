@@ -12,13 +12,12 @@ import DataProtectionSection from '../components/DataProtectionSection';
 const DemoPage = () => {
   return (
     <>
-      <Header />
+   
       <main>
         <HeroDemo />
         <TimelineSection />
         <DataProtectionSection />
       </main>
-      <Footer />
     </>
   );
 };

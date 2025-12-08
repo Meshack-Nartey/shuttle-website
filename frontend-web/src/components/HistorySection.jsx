@@ -4,7 +4,7 @@ const HistorySection = () => {
   return (
     <section className="history-section">
       <div className="container">
-        <p>ShuttleSmart was founded by some college students who were interning with Amatotech in November 2020.</p>
+        <p>ShuttleSmart was founded by some Ghanaian college students who were interning with Amalitech in November 2025.</p>
       </div>
     </section>
   );
