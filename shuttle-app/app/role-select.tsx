@@ -30,7 +30,7 @@ const RoleSelectionScreen = () => {
         {/* Secondary Button: Student */}
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={() => { /* Navigation for student side */ }} 
+          onPress={() => router.push('/(student)/login')} // Navigate to the Driver Login
         >
           <Text style={styles.secondaryButtonText}>Continue as Student</Text>
         </TouchableOpacity>
