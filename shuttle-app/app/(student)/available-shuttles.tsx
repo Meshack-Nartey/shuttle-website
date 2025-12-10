@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS, COMMON_STYLES } from '../constants/Styles';
+import { COLORS } from '../constants/Styles';
 
 // --- MOCK DATA ---
 interface Shuttle {
@@ -102,16 +102,18 @@ const AvailableShuttlesScreen = () => {
     };
 
     return (
-        <View style={COMMON_STYLES.container}>
+        <View style={styles.container}>
             
             {/* Header and Back Button */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-                    <Ionicons name="arrow-back" size={24} color={COLORS.text} />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Available Shuttles</Text>
-                {/* Placeholder for menu or close icon */}
-                <View style={{ width: 50 }} /> 
+                <View style={styles.headerContent}>
+                    <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+                        <Ionicons name="arrow-back" size={24} color={COLORS.text} />
+                    </TouchableOpacity>
+                    <Text style={styles.headerTitle}>Available Shuttles</Text>
+                    {/* Placeholder for menu or close icon */}
+                    <View style={{ width: 50 }} /> 
+                </View>
             </View>
 
             {/* Destination Tag */}
@@ -157,16 +159,22 @@ const AvailableShuttlesScreen = () => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: COLORS.background,
+    },
     header: {
+        paddingTop: 0,
+        borderBottomWidth: 1,
+        borderBottomColor: '#F0F0F0',
+    },
+    headerContent: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 15,
         paddingTop: 50,
         paddingBottom: 15,
-        backgroundColor: COLORS.secondary,
-        borderBottomWidth: 1,
-        borderBottomColor: '#F0F0F0',
     },
     backButton: {
         padding: 5,

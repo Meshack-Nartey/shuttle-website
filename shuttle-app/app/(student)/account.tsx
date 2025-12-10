@@ -1,7 +1,7 @@
 // app/(student)/account.tsx (Main Profile/Account Screen)
 
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, Image, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, COMMON_STYLES } from '../constants/Styles';
@@ -35,23 +35,29 @@ const SettingsItem: React.FC<SettingsItemProps> = ({ icon, title, onPress, isDes
 // --- Main Screen Component ---
 const AccountScreen = () => {
     const router = useRouter();
+    const [isLoggedOut, setIsLoggedOut] = useState(false);
+    const [showLogoutModal, setShowLogoutModal] = useState(false);
 
     const handleLogout = () => {
-        Alert.alert(
-            "Log Out",
-            "Are you sure you want to log out?",
-            [
-                { text: "Cancel", style: "cancel" },
-                { text: "Log Out", style: "destructive", onPress: () => router.replace('/(student)/login') }
-            ]
-        );
+        setShowLogoutModal(true);
+    };
+
+    const confirmLogout = () => {
+        setShowLogoutModal(false);
+        setIsLoggedOut(true);
+        setTimeout(() => {
+            router.replace('/role-select');
+        }, 1500);
+    };
+
+    const cancelLogout = () => {
+        setShowLogoutModal(false);
     };
 
     return (
         <View style={COMMON_STYLES.container}>
-            <Header title="My Account" showBack={true} />
-            
             <ScrollView contentContainerStyle={styles.scrollContainer}>
+                <Header title="My Account" showBack={true} showMenu={false} />
                 
                 {/* Profile Summary Card */}
                 <View style={styles.profileCard}>
@@ -97,9 +103,46 @@ const AccountScreen = () => {
                         isDestructive 
                     />
                 </View>
+
+                {/* Logged Out Message (for visual feedback before navigation) */}
+                {isLoggedOut && (
+                    <View style={styles.loggedOutMessage}>
+                        <Ionicons name="checkmark-circle-outline" size={18} color={COLORS.text} style={{ marginRight: 8 }} />
+                        <Text style={{ color: COLORS.text }}>Logged out successfully</Text>
+                    </View>
+                )}
                 
                 <View style={{ height: 40 }} />
             </ScrollView>
+
+            {/* Logout Confirmation Modal */}
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={showLogoutModal}
+                onRequestClose={cancelLogout}
+            >
+                <TouchableOpacity 
+                    style={styles.modalOverlay} 
+                    activeOpacity={1} 
+                    onPress={cancelLogout}
+                >
+                    <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
+                        <Text style={styles.modalTitle}>Log Out?</Text>
+                        <Text style={styles.modalBody}>
+                            Are you sure you want to log out of your account?
+                        </Text>
+                        <View style={styles.modalActions}>
+                            <TouchableOpacity style={[styles.modalButton, styles.noButton]} onPress={cancelLogout}>
+                                <Text style={styles.modalButtonText}>No</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[styles.modalButton, styles.yesButton]} onPress={confirmLogout}>
+                                <Text style={styles.modalButtonText}>Yes</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </Modal>
 
             {/* Bottom Navigation */}
             <View style={styles.bottomNav}>
@@ -190,6 +233,73 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: COLORS.text,
         marginLeft: 15,
+    },
+    loggedOutMessage: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        backgroundColor: '#FFEBEE',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#EF5350',
+    },
+    // --- Modal Styles ---
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        borderRadius: 15,
+        padding: 25,
+        width: '85%',
+        maxWidth: 400,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: COLORS.text,
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    modalBody: {
+        fontSize: 16,
+        color: COLORS.text,
+        marginBottom: 25,
+        textAlign: 'center',
+        lineHeight: 22,
+    },
+    modalActions: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        gap: 15,
+    },
+    modalButton: {
+        flex: 1,
+        paddingVertical: 12,
+        borderRadius: 8,
+        alignItems: 'center',
+    },
+    noButton: {
+        backgroundColor: COLORS.border,
+    },
+    yesButton: {
+        backgroundColor: '#EF5350',
+    },
+    modalButtonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: '600',
     },
     // --- Bottom Nav (Copied) ---
     bottomNav: {

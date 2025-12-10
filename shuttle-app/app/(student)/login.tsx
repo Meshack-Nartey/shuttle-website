@@ -14,7 +14,7 @@ const LoginScreen = () => {
     <View style={COMMON_STYLES.container}>
       <Header title="Log In" showBack={true} showMenu={false} />
       
-      <Text style={styles.label}>Personal Email</Text>
+      <Text style={styles.label}>Student Email</Text>
       <TextInput
         style={styles.input}
         placeholder="your.email@gmail.com"

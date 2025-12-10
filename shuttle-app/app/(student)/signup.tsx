@@ -98,7 +98,7 @@ const StudentSignUpScreen = () => {
                 style={{ flex: 1 }}
                 onPress={() => isSchoolListVisible && setIsSchoolListVisible(false)}
             >
-                <Header title="Sign Up" showBack={true} />
+                <Header title="Sign Up" showBack={true} showMenu={false} />
                 
                 <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
                     <Text style={styles.headerText}>Create your account and shuttle smart today!</Text>
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 12,
         fontSize: 16,
-        backgroundColor: COLORS.secondary,
+        backgroundColor: COLORS.background,
         color: COLORS.text,
     },
     // --- Searchable Dropdown Styles ---

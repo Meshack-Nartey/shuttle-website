@@ -1,7 +1,7 @@
 // app/(driver)/account.tsx
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS, COMMON_STYLES } from '../constants/Styles';
@@ -11,7 +11,8 @@ import LogoutSuccessModal from '../../components/LogoutSuccessModal'; // NEW Com
 const DriverAccountScreen = () => {
   const router = useRouter();
   const [isLoggedOut, setIsLoggedOut] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   // Mock User Data
   const mockUser = {
@@ -22,18 +23,22 @@ const DriverAccountScreen = () => {
   };
 
   const handleLogout = () => {
-    // In a real app, you would clear AsyncStorage/Auth tokens here.
-    
-    // 1. Show the success modal
-    setShowModal(true); 
+    setShowLogoutModal(true);
+  };
 
-    // 2. Wait for 1.5 seconds, then navigate
+  const confirmLogout = () => {
+    setShowLogoutModal(false);
+    setShowSuccessModal(true);
+    
     setTimeout(() => {
-      setShowModal(false);
-      setIsLoggedOut(true); 
-      // Replace navigates to the role-select page and clears the driver history
-      router.replace('/role-select'); 
-    }, 1500); 
+      setShowSuccessModal(false);
+      setIsLoggedOut(true);
+      router.replace('/role-select');
+    }, 1500);
+  };
+
+  const cancelLogout = () => {
+    setShowLogoutModal(false);
   };
 
   return (
@@ -95,8 +100,37 @@ const DriverAccountScreen = () => {
 
       </ScrollView>
       
+      {/* Logout Confirmation Modal */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={showLogoutModal}
+        onRequestClose={cancelLogout}
+      >
+        <TouchableOpacity 
+          style={styles.modalOverlay} 
+          activeOpacity={1} 
+          onPress={cancelLogout}
+        >
+          <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
+            <Text style={styles.modalTitle}>Log Out?</Text>
+            <Text style={styles.modalBody}>
+              Are you sure you want to log out of your account?
+            </Text>
+            <View style={styles.modalActions}>
+              <TouchableOpacity style={[styles.modalButton, styles.noButton]} onPress={cancelLogout}>
+                <Text style={styles.modalButtonText}>No</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.modalButton, styles.yesButton]} onPress={confirmLogout}>
+                <Text style={styles.modalButtonText}>Yes</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </Modal>
+
       {/* Logout Success Modal */}
-      <LogoutSuccessModal isVisible={showModal} />
+      <LogoutSuccessModal isVisible={showSuccessModal} />
     </View>
   );
 };
@@ -200,7 +234,62 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.05,
     shadowRadius: 5,
-  }
+  },
+  // --- Modal Styles ---
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 15,
+    padding: 25,
+    width: '85%',
+    maxWidth: 400,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: COLORS.text,
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  modalBody: {
+    fontSize: 16,
+    color: COLORS.text,
+    marginBottom: 25,
+    textAlign: 'center',
+    lineHeight: 22,
+  },
+  modalActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 15,
+  },
+  modalButton: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  noButton: {
+    backgroundColor: COLORS.border,
+  },
+  yesButton: {
+    backgroundColor: '#EF5350',
+  },
+  modalButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
 });
 
 export default DriverAccountScreen;

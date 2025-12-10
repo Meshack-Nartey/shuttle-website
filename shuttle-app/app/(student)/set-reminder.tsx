@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, Platform } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS, COMMON_STYLES } from '../constants/Styles';
+import { COLORS } from '../constants/Styles';
 
 type MapModule = typeof import('react-native-maps') | null;
 
@@ -89,7 +89,7 @@ const SetReminderScreen = () => {
     };
 
     return (
-        <View style={COMMON_STYLES.container}>
+        <View style={styles.container}>
             
             {/* ⚠️ Map View Placeholder/Fallback for Web (Similar to home-search) */}
             <View style={styles.mapContainer}>
@@ -106,10 +106,13 @@ const SetReminderScreen = () => {
 
             {/* Content Card (Set Reminder) */}
             <ScrollView contentContainerStyle={styles.contentCard}>
-                <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-                    <Ionicons name="arrow-back" size={24} color={COLORS.text} />
-                </TouchableOpacity>
-                <Text style={styles.screenTitle}>Set Reminder</Text>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+                        <Ionicons name="arrow-back" size={24} color={COLORS.text} />
+                    </TouchableOpacity>
+                    <Text style={styles.screenTitle}>Set Reminder</Text>
+                    <View style={{ width: 40 }} />
+                </View>
 
                 {/* Shuttle Information Card */}
                 <View style={styles.shuttleInfoCard}>
@@ -191,8 +194,9 @@ const SetReminderScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    body: {
-      padding: 0,
+    container: {
+        flex: 1,
+        backgroundColor: COLORS.background,
     },
     mapContainer: {
         height: '40%', // Take up the top part of the screen
@@ -217,23 +221,29 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.secondary,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
+        paddingHorizontal: 20,
         paddingTop: 20,
         marginTop: -30, // Overlap the map area slightly
         paddingBottom: 80, // Space for the bottom nav
+    },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 20,
+        gap: 5,
+        paddingTop: 25,
     },
     backButton: {
         width: 40,
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 10,
     },
     screenTitle: {
         fontSize: 22,
         fontWeight: 'bold',
         color: COLORS.text,
-        marginBottom: 20,
-        paddingLeft: 5,
     },
     // --- Shuttle Info Card ---
     shuttleInfoCard: {
@@ -366,11 +376,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 15,
         alignItems: 'center',
-        // Pushing it down towards the bottom nav area
-        position: 'absolute',
-        bottom: 10,
-        left: 20,
-        right: 20,
+        marginTop: 20,
     },
     disabledButton: {
         backgroundColor: COLORS.border,

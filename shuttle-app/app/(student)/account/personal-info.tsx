@@ -10,6 +10,7 @@ import { COLORS, COMMON_STYLES } from '../../constants/Styles';
 const INITIAL_USER = {
     name: 'John Doe',
     username: 'johndoe12',
+    email: 'john.doe@st.knust.edu.gh',
     profilePic: 'https://via.placeholder.com/150/0000FF/808080?text=JD', 
 };
 
@@ -59,7 +60,7 @@ const PersonalInfoScreen = () => {
                     <Ionicons name="arrow-back" size={24} color={COLORS.text} />
                 </TouchableOpacity>
                 <Text style={styles.headerTitle}>Personal Information</Text>
-                <View style={{ width: 40 }} /> 
+                <View style={{ width: 40 }} />
             </View>
 
             <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -77,6 +78,14 @@ const PersonalInfoScreen = () => {
                 <TextInput 
                     style={[styles.input, styles.disabledInput]} 
                     value={INITIAL_USER.name} 
+                    editable={false} 
+                />
+
+                {/* Student Email (Non-Editable) */}
+                <Text style={styles.label}>Student Email</Text>
+                <TextInput 
+                    style={[styles.input, styles.disabledInput]} 
+                    value={INITIAL_USER.email} 
                     editable={false} 
                 />
 
@@ -119,7 +128,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingTop: 50,
         paddingBottom: 15,
-        backgroundColor: COLORS.secondary,
+        backgroundColor: COLORS.background,
         borderBottomWidth: 1,
         borderBottomColor: '#F0F0F0',
     },
@@ -184,12 +193,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     // --- Save Button ---
-    saveContainer: {
-        padding: 20,
-        backgroundColor: 'white',
-        borderTopWidth: 1,
-        borderTopColor: COLORS.border,
-    },
     saveButton: {
         backgroundColor: COLORS.primary,
         borderRadius: 10,

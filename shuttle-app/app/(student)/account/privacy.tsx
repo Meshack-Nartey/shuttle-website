@@ -51,15 +51,7 @@ const PrivacyScreen = () => {
     };
 
     const handleLocationToggle = (value: boolean) => {
-        if (value && !settings.locationTracking) {
-            Alert.alert(
-                "Location Permission Required",
-                "To enable location tracking, you must grant the app location permissions in your device settings.",
-                [{ text: "OK", onPress: () => handleToggle('locationTracking', true) }]
-            );
-        } else {
-            handleToggle('locationTracking', value);
-        }
+        handleToggle('locationTracking', value);
     };
 
     const handleSaveChanges = async () => {
@@ -132,7 +124,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingTop: 50,
         paddingBottom: 15,
-        backgroundColor: COLORS.secondary,
+        backgroundColor: COLORS.background,
         borderBottomWidth: 1,
         borderBottomColor: '#F0F0F0',
     },
@@ -187,12 +179,6 @@ const styles = StyleSheet.create({
         marginLeft: 60, // Align with text container
     },
     // --- Save Button ---
-    saveContainer: {
-        padding: 20,
-        backgroundColor: 'white',
-        borderTopWidth: 1,
-        borderTopColor: COLORS.border,
-    },
     saveButton: {
         backgroundColor: COLORS.primary,
         borderRadius: 10,

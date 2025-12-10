@@ -54,7 +54,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     }, [value]);
 
     return (
-        <View style={styles.searchInputGroup}>
+        <View style={[styles.searchInputGroup, isFocused && styles.searchInputGroupFocused]}>
             <Text style={styles.inputLabel}>{label}</Text>
             
             {/* Input Bar */}
@@ -311,6 +311,9 @@ const styles = StyleSheet.create({
     },
     searchInputGroup: {
         marginBottom: 20,
+    },
+    searchInputGroupFocused: {
+        zIndex: 10000, // Ensure focused input's dropdown appears above other elements
     },
     inputLabel: {
         fontSize: 18,

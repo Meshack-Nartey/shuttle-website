@@ -131,7 +131,7 @@ const ActivityScreen = () => {
 
     return (
         <View style={COMMON_STYLES.container}>
-            <Header title="Your Activity" showBack={true} />
+            <Header title="Your Activity" showBack={true} showMenu={false} />
             
             {/* Tab Selector */}
             <View style={styles.tabContainer}>
